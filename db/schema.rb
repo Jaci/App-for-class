@@ -11,23 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120714202024) do
+ActiveRecord::Schema.define(:version => 20120725003510) do
 
   create_table "consultants", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.string   "phone_number", :limit => nil
+    t.string   "fax_number",   :limit => nil
+    t.string   "address",      :limit => nil
+    t.string   "cost",         :limit => nil
   end
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
     t.string   "city"
     t.string   "agency"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.string   "title",      :limit => nil
-    t.string   "level",      :limit => nil
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.string   "title",         :limit => nil
+    t.string   "level",         :limit => nil
+    t.integer  "consultant_id"
   end
 
   create_table "users", :force => true do |t|

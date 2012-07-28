@@ -5,7 +5,11 @@ class ContactsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @contacts = Contact.all
+    @contacts = Contact.where('')
+
+    if params[:city].present?
+      @contacts = @contacts.where(:city => params[:city]) 
+    end
 
     respond_to do |format|
       format.html # index.html.erb

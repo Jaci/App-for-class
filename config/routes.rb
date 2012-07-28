@@ -8,6 +8,8 @@ end
 
   resources :consultants
 
+  resources :home
+
 
   
 

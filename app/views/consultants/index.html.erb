@@ -7,8 +7,11 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:phone_number) %></th>
+      <th><%= model_class.human_attribute_name(:fax_number) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:cost) %></th>
+      
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,8 +20,11 @@
       <tr>
         <td><%= link_to consultant.id, consultant_path(consultant) %></td>
         <td><%= consultant.name %></td>
-        <td><%= consultant.description %></td>
-        <td><%=l consultant.created_at %></td>
+        <td><%= consultant.phone_number %></td>
+        <td><%= consultant.fax_number %></td>
+        <td><%= consultant.address %></td>
+        <td><%= consultant.cost %></td>
+        
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_consultant_path(consultant), :class => 'btn btn-mini' %>
