@@ -8,4 +8,9 @@
 form_tag({:controller => "contacts", :action => "search"}, :method => "get", :class => "nifty_form")
 # => '<form accept-charset="UTF-8" action="/people/search" method="get" class="nifty_form">'
 
+<h4> Add a new contact </h4>
+<%= link_to t('contact.new', :default => t("helpers.links.add_a_new_contact")),
+            new_contact_path,
+            :class => 'btn btn-primary' %>
+
 <% end %>

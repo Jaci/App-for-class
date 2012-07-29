@@ -6,18 +6,15 @@ class ContactsController < ApplicationController
   
   def index
 
-    @contacts = Contact.where('')
+    @contacts = Contact.all
    
 
     if params[:city].present?
       @contacts = @contacts.where(:city => params[:city]) 
     end
-
-
-    if params[:consultat_id].present?
-      @consultant_name = Consultant.find(:consultant_id => params[:consultant_id]).name
-    end
-
+    #if params[:consultant_id].present?
+      #@consultant_name = Contact.find(params[:id]).consultants
+    #end
 
     respond_to do |format|
       format.html # index.html.erb

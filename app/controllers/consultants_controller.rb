@@ -7,6 +7,8 @@ class ConsultantsController < ApplicationController
   def index
     @consultants = Consultant.all
 
+    @consultant_contacts = Contact.where(:consultant_id => params[:id]).all
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @consultants }

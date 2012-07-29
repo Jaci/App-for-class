@@ -11,22 +11,23 @@
       <th><%= model_class.human_attribute_name(:level) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><% model_class.human_attribute_name(:created_at) %></th>
       <th><%= model_class.human_attribute_name(:consultant_name) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @contacts.each do |contact| %>
-      <tr>
+    <tr>
         <td><%= link_to contact.id, contact_path(contact) %></td>
         <td><%= contact.agency %></td>
         <td><%= contact.city %></td>
         <td><%= contact.level %></td>
         <td><%= contact.name %></td>
         <td><%= contact.title %></td>
-        <td><%= contact.created_at %></td>
-        <td><%= @consultant_name %></td>
+        <td><% contact.created_at %></td>
+        <td><%= link_to contact.consultants, 
+                  consultant_path(contact.consultant_id) %></td>
         
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
