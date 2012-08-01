@@ -12,9 +12,10 @@ class ContactsController < ApplicationController
     if params[:city].present?
       @contacts = @contacts.where(:city => params[:city]) 
     end
-    #if params[:consultant_id].present?
-      #@consultant_name = Contact.find(params[:id]).consultants
-    #end
+    
+    if params[:consultant_id].present?
+      @consultant_name = Contact.find(params[:id]).consultants
+    end
 
     respond_to do |format|
       format.html # index.html.erb

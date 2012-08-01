@@ -2,43 +2,61 @@
   
   
  <div class="control-group">
-    <%= f.label :consultant_id, :class => 'control-label' %>
+    <%= f.label :consultant, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :consultant_id, :class => 'text_field' %>
+    <%# select(:person, :city_id, [['Lisbon', 1], ['Madrid', 2], ...]) %>
+
+    <%# select(:contact, :consultant_id, Consultant.all.map {|x| [x.name, x.id] }) %>
+    <%= select_tag('contact[consultant_ids][]', options_for_select(Consultant.all.map {|x| [x.name, x.id] }), :multiple => true)  %>
     </div>
-  </div>
+    </div>
+
   <div class="control-group">
     <%= f.label :agency, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :agency, :class => 'text_field' %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label :city, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :city, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
+
+<!--   <div class="control-group">
     <%= f.label :level, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :level, :class => 'text_field' %>
     </div>
+  </div> -->
+
+  <div class="control-group">
+    <%= f.label :level, :class => 'control-label' %>
+    <div class="controls">
+    <%= select('contact', :level, [['Low', "Low"], ['Medium', 'Medium'], ['High', "High"]]) %>
+    </div>
   </div>
+
+  
+
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :title, :class => 'text_field' %>
     </div>
   </div>
-  
-  
+
+    
+<br>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
@@ -46,3 +64,24 @@
                 contacts_path, :class => 'btn' %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,6 +2,12 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_consultant_path,
+            :class => 'btn btn-primary' %>
+<br>          
+<br>    
 <table class="table table-striped">
   <thead>
     <tr>
@@ -19,11 +25,11 @@
     <% @consultants.each do |consultant| %>
       <tr>
         <td><%= link_to consultant.id, consultant_path(consultant) %></td>
-        <td><%= consultant.name %></td>
-        <td><%= consultant.phone_number %></td>
-        <td><%= consultant.fax_number %></td>
-        <td><%= consultant.address %></td>
-        <td><%= consultant.cost %></td>
+        <td><%= link_to consultant.name, consultant_path(consultant) || "--" %></td>
+        <td><%= consultant.phone_number || "--" %></td>
+        <td><%= consultant.fax_number || "--" %></td>
+        <td><%= consultant.address || "--" %></td>
+        <td><%= consultant.cost || "--" %></td>
         
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

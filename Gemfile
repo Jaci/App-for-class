@@ -7,6 +7,7 @@ gem 'rails', '3.2.6'
 
 gem 'devise'
 gem 'sqlite3'
+gem 'sunspot_rails'
 gem "twitter-bootstrap-rails"
 
 

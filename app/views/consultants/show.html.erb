@@ -5,15 +5,21 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @consultant.name %></dd>
+  <dd><%= @consultant.name || "--" %></dd>
   <dt><strong><%= model_class.human_attribute_name(:phone_number) %>:</strong></dt>
-  <dd><%= @consultant.phone_number %></dd>
+  <dd><%= @consultant.phone_number || "--" %></dd>
+  
   <dt><strong><%= model_class.human_attribute_name(:fax_number) %>:</strong></dt>
-  <dd><%= @consultant.fax_number %></dd>
+  <% if @consultant.fax_number.present? %> 
+    <dd><%= @consultant.fax_number %></dd>
+    <% else %>
+    <dd><%= "--" %></dd>
+    <% end %>
+
   <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-  <dd><%= @consultant.address %></dd>
+  <dd><%= @consultant.address || "--" %></dd>
   <dt><strong><%= model_class.human_attribute_name(:cost) %>:</strong></dt>
-  <dd><%= @consultant.name %></dd>
+  <dd><%= @consultant.cost || "--" %></dd>
 </dl>
 
 <div class="form-actions">
@@ -32,6 +38,10 @@
   <div class="page-header">
   <h3><%= "#{@consultant.name}'s Contacts" %></h3>
 </div>
+
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_contact_path,
+            :class => 'btn btn-primary' %>
   
   <table class="table table-striped">
   <thead>
@@ -47,15 +57,15 @@
     </tr>
   </thead>
   <tbody>
-    <% consultant_contact = Contact.where(:consultant_id => params[:id]).all %>
+    <% consultant_contact = Consultant.where(:id => params[:id]).first.contacts %>
     <% consultant_contact.each do |contact| %>
     <tr>
         <td><%= link_to contact.id, contact_path(contact) %></td>
-        <td><%= contact.agency %></td>
-        <td><%= contact.city %></td>
-        <td><%= contact.level %></td>
-        <td><%= contact.name %></td>
-        <td><%= contact.title %></td>
+        <td><%= contact.agency || "--" %></td>
+        <td><%= contact.city || "--" %></td>
+        <td><%= contact.level || "--" %></td>
+        <td><%= contact.name || "--" %></td>
+        <td><%= contact.title || "--" %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_contact_path(contact), :class => 'btn btn-mini' %>

@@ -5,12 +5,20 @@
   <%= text_field_tag(:q) %>
   <%= submit_tag("Search") %>
 
-form_tag({:controller => "contacts", :action => "search"}, :method => "get", :class => "nifty_form")
-# => '<form accept-charset="UTF-8" action="/people/search" method="get" class="nifty_form">'
-
+<div class="control-group">
 <h4> Add a new contact </h4>
 <%= link_to t('contact.new', :default => t("helpers.links.add_a_new_contact")),
             new_contact_path,
             :class => 'btn btn-primary' %>
+
+</div>
+
+<div class="control-group">
+
+<h4> Add a new consultant </h4>
+<%= link_to t('consultant.new', :default => t("helpers.links.add_a_new_consultant")),
+            new_consultant_path,
+            :class => 'btn btn-primary' %>
+</div>
 
 <% end %>

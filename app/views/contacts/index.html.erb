@@ -2,6 +2,12 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_contact_path,
+            :class => 'btn btn-primary' %>
+<br>
+<br>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -12,23 +18,46 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><% model_class.human_attribute_name(:created_at) %></th>
-      <th><%= model_class.human_attribute_name(:consultant_name) %></th>
+      <th><%= "Consultants" %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
+    
     <% @contacts.each do |contact| %>
-    <tr>
+    
+    <tr> 
         <td><%= link_to contact.id, contact_path(contact) %></td>
-        <td><%= contact.agency %></td>
+        <td><%= contact.agency || "--" %></td>
+        <% if contact.city.present? %> 
         <td><%= contact.city %></td>
+        <% else %>
+          <td>––</td>
+        <% end %>
+        <% if contact.level.present? %> 
         <td><%= contact.level %></td>
-        <td><%= contact.name %></td>
+        <% else %>
+          <td>––</td>
+        <% end %>
+        <% if contact.name.present? %> 
+        <td><%= link_to contact.name, contact_path(contact) %></td>
+        <% else %>
+          <td>––</td>
+        <% end %>
+        <% if contact.title.present? %> 
         <td><%= contact.title %></td>
+        <% else %>
+          <td>––</td>
+        <% end %>
         <td><% contact.created_at %></td>
-        <td><%= link_to contact.consultants, 
-                  consultant_path(contact.consultant_id) %></td>
-        
+        <% if contact.consultant_ids.present? %> 
+          <td><% contact.consultants.each do |consultant| %> 
+          <%= link_to consultant.name, consultant %> <br>
+          <% end %>
+        </td>
+        <% else %>
+          <td>––</td>
+        <% end %>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_contact_path(contact), :class => 'btn btn-mini' %>
