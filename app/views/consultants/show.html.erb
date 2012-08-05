@@ -74,6 +74,8 @@
     <dd><%= "--" %></dd>
     <% end %>
 
+    <% if current_user.inside? %>
+
     <dt><strong><%= model_class.human_attribute_name(:cost) %>:</strong></dt>
   <% if @consultant.cost.present? %> 
     <dd><%= @consultant.cost %></dd>
@@ -87,6 +89,8 @@
     <% else %>
     <dd><%= "--" %></dd>
     <% end %>
+
+  <% if current_user.manager? %>
 
   <dt><strong><%= model_class.human_attribute_name(:start_date) %>:</strong></dt>
   <% if @consultant.start_date.present? %> 
@@ -143,6 +147,44 @@
               :class => 'btn btn-danger' %>
 </div>
 
+
+<% else %>
+
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              consultants_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_consultant_path(@consultant), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              consultant_path(@consultant),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure you want to delete #{@consultant.name}'s record?")),
+              :class => 'btn btn-danger' %>
+</div>
+
+<% end %>
+
+<% else %>
+
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              consultants_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_consultant_path(@consultant), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              consultant_path(@consultant),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure you want to delete #{@consultant.name}'s record?")),
+              :class => 'btn btn-danger' %>
+</div>
+
+<% end %>
+
+<% if current_user.inside? %>
     
   <div class="page-header">
   <h3><%= "#{@consultant.name}'s Contacts" %></h3>
@@ -183,11 +225,22 @@
                       :method => :delete,
                       :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure you want to delete #{@consultant.name}'s contact at the #{contact.agency}?")),
                       :class => 'btn btn-mini btn-danger' %>
+
+
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<% else %>
+<% end %>
+
+<% if current_user.manager? %>
+<%= "I am a manager." %>
+<% else %>
+<%= "Not a manager" %>
+<% end %>
  
 
 

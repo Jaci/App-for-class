@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805202135) do
+ActiveRecord::Schema.define(:version => 20120805203755) do
 
   create_table "consultants", :force => true do |t|
     t.string   "name"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20120805202135) do
     t.datetime "updated_at",                                :null => false
     t.boolean  "manager",                :default => false
     t.boolean  "inside",                 :default => false
-    t.boolean  "outside",                :default => false
+    t.boolean  "outside",                :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -4,6 +4,8 @@ class Consultant < ActiveRecord::Base
   :spi_notes, :start_date, :aff_dl, :contract, :contacts_input, :resume, :admin_notes
 
   has_and_belongs_to_many :contacts
+
+  has_one :user
   # has_many :consultants_contacts
   # has_many :contacts, :through => :consultants_contacts
 

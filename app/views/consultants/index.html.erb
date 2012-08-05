@@ -18,7 +18,11 @@
       <th><%= model_class.human_attribute_name(:address) %></th>
       <th><%= model_class.human_attribute_name("Geographical Expertise") %></th>
       <th><%= model_class.human_attribute_name( "Subject Expertise") %></th>
+      
+      <% if current_user.inside? %>
       <th><%= model_class.human_attribute_name("SPI notes") %></th>
+      <% else %>
+      <% end %>
       
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -37,8 +41,10 @@
         <td><%= consultant.address || "--" %></td>
         <td><%= consultant.geo_expertise || "--" %></td>
         <td><%= consultant.subject_expertise || "--" %></td>
+        <% if current_user.inside? %> 
         <td><%= consultant.spi_notes || "--" %></td>
-        
+        <% else %>
+          <% end %>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_consultant_path(consultant), :class => 'btn btn-mini' %>
