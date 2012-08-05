@@ -1,8 +1,10 @@
 class Contact < ActiveRecord::Base
-  attr_accessible :consultant_ids, :agency, :city, :name, :consultant_id, :title, :level, :id, :consultants
+  attr_accessible :consultant_ids, :agency, :city, :name, :title, :level, :id, 
+  :consultants, :entity_type, :sp_notes
 
  has_and_belongs_to_many :consultants 
 
+  
 
 # def consultants
 # 	consultant_id= self.consultant_id
@@ -19,5 +21,15 @@ def consultant_select
 	end
 	return names
 end
+
+
+
+
+
+
+
+
+
+
 
 end

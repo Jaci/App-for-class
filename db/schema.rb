@@ -11,17 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120730231524) do
+ActiveRecord::Schema.define(:version => 20120805202135) do
 
   create_table "consultants", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.string   "phone_number", :limit => nil
-    t.string   "fax_number",   :limit => nil
-    t.string   "address",      :limit => nil
-    t.string   "cost",         :limit => nil
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "phone_number",      :limit => nil
+    t.string   "fax_number",        :limit => nil
+    t.string   "address",           :limit => nil
+    t.string   "cost",              :limit => nil
+    t.string   "last_name"
+    t.string   "geo_expertise"
+    t.string   "subject_expertise"
+    t.string   "email_other"
+    t.string   "email_spi"
+    t.string   "sec_phone"
+    t.text     "spi_notes"
+    t.string   "aff_dl"
+    t.string   "contract"
+    t.string   "contacts_input"
+    t.string   "resume"
+    t.text     "admin_notes"
+    t.string   "start_date"
   end
 
   create_table "consultants_contacts", :id => false, :force => true do |t|
@@ -30,18 +43,18 @@ ActiveRecord::Schema.define(:version => 20120730231524) do
   end
 
   create_table "contacts", :force => true do |t|
-    t.string   "name"
     t.string   "city"
     t.string   "agency"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "title"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "level"
+    t.string   "entity_type"
+    t.text     "sp_notes"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -50,8 +63,11 @@ ActiveRecord::Schema.define(:version => 20120730231524) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.boolean  "manager",                :default => false
+    t.boolean  "inside",                 :default => false
+    t.boolean  "outside",                :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

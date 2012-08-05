@@ -11,6 +11,21 @@
     </div>
     </div>
 
+    <div class="control-group">
+    <%= f.label :entity_type, :class => 'control-label' %>
+    <div class="controls">
+    <%= select('contact', :entity_type, 
+      [['K-12', "K-12"], 
+      ['Higher ed', 'Higher ed'],
+      ['City/town', "City/town"],
+      ['County/parish', 'County/parish'], 
+      ['Special district', 'Special district'], 
+      ['State agency', 'State agency'], 
+      ['Federal agency', 'Federal agency'],  
+      ['Association', 'Association']]) %>
+    </div>
+  </div>
+
   <div class="control-group">
     <%= f.label :agency, :class => 'control-label' %>
     <div class="controls">
@@ -35,23 +50,14 @@
   <div class="control-group">
     <%= f.label :level, :class => 'control-label' %>
     <div class="controls">
-    <%= select('contact', :level, [['Low', "Low"], ['Medium', 'Medium'], ['High', "High"]]) %>
-    </div>
-  </div>
-
-  
-
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+    <%= select('contact', :level, [['Entity leadership', "Entity leadership"], ['Department Leadership', 'Department Leadership'], ['Intelligence source', "Intelligence source"]]) %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
+    <%= f.label :sp_notes, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
+      <%= f.text_area :sp_notes, :class => 'text_area' %>
     </div>
   </div>
 

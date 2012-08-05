@@ -4,36 +4,42 @@
 </div>
 
 <dl class="dl-horizontal">
+  
+  <dt><strong><%= model_class.human_attribute_name(:entity_type) %>:</strong></dt>
+  <% if @contact.entity_type.present? %> 
+  <dd><%= @contact.entity_type %></dd>
+  <% else %>
+        <dd> -- </dd>
+        <% end %>
+
   <dt><strong><%= model_class.human_attribute_name(:agency) %>:</strong></dt>
   <% if @contact.agency.present? %> 
   <dd><%= @contact.agency %></dd>
   <% else %>
-          <td>None</td>
+          <dd> -- </dd>
         <% end %>
-        <% if @contact.city.present? %>
-  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
+  
+  <% if @contact.city.present? %>
+  <dt><strong><%= model_class.human_attribute_name("Location") %>:</strong></dt>
   <dd><%= @contact.city %></dd>
   <% else %>
-          <td>None</td>
+          <dd> -- </dd>
         <% end %>
-        <% if @contact.level.present? %>
+  
+  <% if @contact.level.present? %>
   <dt><strong><%= model_class.human_attribute_name(:level) %>:</strong></dt>
   <dd><%= @contact.level %></dd>
   <% else %>
-          <td>None</td>
+          <dd> -- </dd>
         <% end %>
-        <% if @contact.name.present? %>
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @contact.name %></dd>
+  
+  <% if @contact.sp_notes.present? %>
+  <dt><strong><%= model_class.human_attribute_name("SPI notes") %>:</strong></dt>
+  <dd><%= @contact.sp_notes %></dd>
   <% else %>
-          <td>None</td>
+          <dd> -- </dd>
         <% end %>
-        <% if @contact.title.present? %>
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @contact.title %></dd>
-  <% else %>
-          <td>None</td>
-        <% end %>
+  
   
   <dt><strong><%= "Consultants" %>:</strong></dt>
   <dd>

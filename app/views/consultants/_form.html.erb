@@ -7,9 +7,24 @@
   </div>
 
   <div class="control-group">
+    <%= f.label :last_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :last_name, :class => 'text_field' %>
+    </div>
+  </div>
+
+
+  <div class="control-group">
     <%= f.label :phone_number, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :phone_number, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :sec_phone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sec_phone, :class => 'text_field' %>
     </div>
   </div>
 
@@ -27,10 +42,87 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :email_other, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email_other, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :email_spi, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email_spi, :class => 'text_field' %>
+    </div>
+  </div>
+
     <div class="control-group">
     <%= f.label :cost, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :cost, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :geo_expertise, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :geo_expertise, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :subject_expertise, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :subject_expertise, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :spi_notes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :spi_notes, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :start_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_date, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :aff_dl, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :aff_dl, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :contract, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :contract, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :contacts_input, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :contacts_input, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :resume, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :resume, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :admin_notes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :admin_notes, :class => 'text_field' %>
     </div>
   </div>
 
@@ -40,3 +132,4 @@
                 consultants_path, :class => 'btn' %>
   </div>
 <% end %>
+
