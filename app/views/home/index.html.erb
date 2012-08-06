@@ -1,9 +1,24 @@
 <h3> Search for a Contact </h3>
 
-<%= form_tag("/search", :method => "get") do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
+
+<div class="control-group">
+  <%= form_tag contacts_path, :method => :get do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search contacts", :name => nil, 
+    		:class => 'btn btn-primary' %>
+        <% end %>
+  </p>
+</div>
+
+<div class="control-group">
+  <%= form_tag consultants_path, :method => :get do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search consultants", :name => nil, 
+        :class => 'btn btn-primary' %>
+        <% end %>
+  </p>
+</div>
+
 
 <div class="control-group">
 <h4> Add a new contact </h4>
@@ -13,6 +28,8 @@
 
 </div>
 
+<% if current_user.manager? %>
+
 <div class="control-group">
 
 <h4> Add a new consultant </h4>
@@ -21,4 +38,5 @@
             :class => 'btn btn-primary' %>
 </div>
 
+<% else %>
 <% end %>

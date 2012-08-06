@@ -8,7 +8,9 @@ gem 'rails', '3.2.6'
 gem 'devise'
 gem 'sqlite3'
 gem 'sunspot_rails'
+gem 'sunspot_solr'
 gem "twitter-bootstrap-rails"
+gem 'will_paginate', '~> 3.0'
 
 
 # Gems used only for assets and not required

@@ -3,9 +3,16 @@ class ConsultantsController < ApplicationController
   # GET /consultants.json
 
   before_filter :authenticate_user!
-  
+
   def index
-    @consultants = Consultant.all
+
+    @search = Consultant.search do
+      fulltext params[:search]
+      end
+      
+      @consultants = @search.results
+
+      # @consultants = Consultant.all
 
     #@con = Contact.where(:consultant_id => params[:id]).all
 
@@ -14,7 +21,6 @@ class ConsultantsController < ApplicationController
       format.json { render json: @consultants }
     end
   end
-
   # GET /consultants/1
   # GET /consultants/1.json
   def show

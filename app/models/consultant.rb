@@ -5,10 +5,16 @@ class Consultant < ActiveRecord::Base
 
   has_and_belongs_to_many :contacts
 
-  has_one :user
-  # has_many :consultants_contacts
-  # has_many :contacts, :through => :consultants_contacts
-
+  #belongs_to :user
   
 
+  searchable do
+    text :name
+    text :last_name
+    text :address
+    text :geo_expertise
+    text :subject_expertise
+    text :spi_notes
+
+  end
 end
