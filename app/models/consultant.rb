@@ -8,13 +8,13 @@ class Consultant < ActiveRecord::Base
   belongs_to :user
 
 
-  searchable do
-    text :name
-    text :last_name
-    text :address
-    text :geo_expertise
-    text :subject_expertise
-    text :spi_notes
+  #searchable do
+   # text :name
+    #text :last_name
+    #text :address
+    #text :geo_expertise
+    #text :subject_expertise
+    #text :spi_notes
 
-  end
+  #end
 end

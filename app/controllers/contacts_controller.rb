@@ -6,14 +6,14 @@ class ContactsController < ApplicationController
   
   def index
 
-      @search = Contact.search do
-        fulltext params[:search]
-        paginate :page => params[:page], :per_page => 10
-      end
+      #@search = Contact.search do
+       # fulltext params[:search]
+        #paginate :page => params[:page], :per_page => 10
+      #end
       
-      @contacts = @search.results
+      #@contacts = @search.results
 
-
+    @contacts = Contact.all
 
     respond_to do |format|
       format.html # index.html.erb

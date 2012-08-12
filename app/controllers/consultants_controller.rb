@@ -6,13 +6,9 @@ class ConsultantsController < ApplicationController
 
   def index
 
-    @search = Consultant.search do
-      fulltext params[:search]
-      end
-      
-      @consultants = @search.results
+    
 
-      # @consultants = Consultant.all
+       @consultants = Consultant.all
 
     #@con = Contact.where(:consultant_id => params[:id]).all
 

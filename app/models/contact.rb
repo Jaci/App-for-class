@@ -22,11 +22,11 @@ class Contact < ActiveRecord::Base
 # end
 
 
-  searchable do
-    text :agency, :boost => 5
-    text :city
-    text :consultants
-    text :entity_type, :boost => 2
+  #searchable do
+    #text :agency, :boost => 5
+    #text :city
+    #text :consultants
+    #text :entity_type, :boost => 2
 
     
     #boolean :featured
@@ -41,7 +41,7 @@ class Contact < ActiveRecord::Base
       #title.downcase.gsub(/^(an?|the)/, '')
     #end
   #end
-end
+#end
 
 
 
