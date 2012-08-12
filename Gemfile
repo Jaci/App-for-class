@@ -6,7 +6,14 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise'
-gem 'sqlite3'
+
+group :development do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+end
+
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem "twitter-bootstrap-rails"
