@@ -7,27 +7,13 @@ class ContactsController < ApplicationController
   def index
 
       @search = Contact.search do
-      fulltext params[:search]
+        fulltext params[:search]
+        paginate :page => params[:page], :per_page => 10
       end
       
       @contacts = @search.results
 
 
-
-      @contacts_paginate = Contact.paginate(:page => params[:page], :per_page => 5)
-      
-    
-      #@contacts = Contact.paginate(:page => params[:page], :per_page => 5)
-
-   
-
-    # if params[:city].present?
-    #   @contacts = @contacts.where(:city => params[:city]) 
-    # end
-    
-    # if params[:consultant_id].present?
-    #   @consultant_name = Contact.find(params[:id]).consultants
-    # end
 
     respond_to do |format|
       format.html # index.html.erb

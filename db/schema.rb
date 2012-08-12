@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805203755) do
+ActiveRecord::Schema.define(:version => 20120806232723) do
 
   create_table "consultants", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20120805203755) do
     t.string   "resume"
     t.text     "admin_notes"
     t.string   "start_date"
+    t.integer  "user_id"
   end
 
   create_table "consultants_contacts", :id => false, :force => true do |t|

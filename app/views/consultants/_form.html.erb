@@ -15,6 +15,12 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+    <%= select_tag('consultants[user_id.email][]', options_for_select(User.all.map {|x| [x.email, x.id] }), :multiple => true)  %>
+    </div>
+    </div>
 
   <div class="control-group">
     <%= f.label :phone_number, :class => 'control-label' %>

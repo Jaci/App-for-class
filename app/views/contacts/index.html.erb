@@ -112,16 +112,125 @@
       </tr>
     <% end %>
   </tbody>
-</table>
-
-<%= will_paginate @contacts_paginate, :page_links => false %> 
+</table> 
+<%= will_paginate @contacts %>
 <br>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_contact_path,
             :class => 'btn btn-primary' %>
 
+<br>
+
+
 <% else %>
+
+
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:entity_type) %></th>
+      <th><%= model_class.human_attribute_name(:agency) %></th>
+      <th><%= model_class.human_attribute_name(:location) %></th>
+      <th><%= model_class.human_attribute_name(:level) %></th>
+      <th><%= model_class.human_attribute_name("SPI notes") %></th>
+      <th><% model_class.human_attribute_name(:created_at) %></th>
+      <th><%= "Consultants" %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @outside_contacts = User.find(current_user.id).consultant.contacts %>
+    <% @outside_contacts.each do |contact| %>
+
+
+    
+    <tr> 
+        <td><%= link_to contact.id, contact_path(contact) %></td>
+        
+        <% if contact.entity_type.present? %> 
+        <td><%= contact.entity_type %></td>
+        <% else %>
+          <td>––</td>
+        <% end %>
+
+        <% if contact.agency.present? %> 
+        <td><%= contact.agency %></td>
+        <% else %>
+          <td>––</td>
+        <% end %>
+
+        <% if contact.city.present? %> 
+        <td><%= contact.city %></td>
+        <% else %>
+          <td>––</td>
+        <% end %>
+
+        <% if contact.level.present? %> 
+        <td><%= contact.level %></td>
+        <% else %>
+          <td>––</td>
+        <% end %>
+
+        <% if contact.sp_notes.present? %> 
+        <td><%= contact.sp_notes %></td>
+        <% else %>
+          <td>––</td>
+        <% end %>
+
+        <td><% contact.created_at %></td>
+
+        <% if contact.consultant_ids.present? %> 
+          <td><% contact.consultants.each do |consultant| %> 
+          <%= link_to consultant.name, consultant %> <br>
+          <% end %>
+        </td>
+        <% else %>
+          <td>––</td>
+        <% end %>
+        <td>
+
+
+      
+
+          <% if contact.consultant_ids.present? %>
+          <% contact.consultants.each do |consultant| %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_contact_path(contact), :class => 'btn btn-mini' %>
+
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      contact_path(contact),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure you want to delete #{consultant.name}'s contact?")),
+                      :class => 'btn btn-mini btn-danger' %>
+                      <br>
+
+                      <% end %>
+
+          <% else %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_contact_path(contact), :class => 'btn btn-mini' %>
+
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      contact_path(contact),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure you want to delete this contact?")),
+                      :class => 'btn btn-mini btn-danger' %>
+                      
+
+                      
+                      <% end %>
+
+
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>
 
 

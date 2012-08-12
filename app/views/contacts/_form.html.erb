@@ -1,15 +1,28 @@
 <%= form_for @contact, :html => { :class => 'form-horizontal' } do |f| %>
   
+
+    <% if current_user.inside? %>
   
- <div class="control-group">
+    <div class="control-group">
     <%= f.label :consultant, :class => 'control-label' %>
     <div class="controls">
-    <%# select(:person, :city_id, [['Lisbon', 1], ['Madrid', 2], ...]) %>
-
-    <%# select(:contact, :consultant_id, Consultant.all.map {|x| [x.name, x.id] }) %>
     <%= select_tag('contact[consultant_ids][]', options_for_select(Consultant.all.map {|x| [x.name, x.id] }), :multiple => true)  %>
     </div>
     </div>
+
+    <% else %>
+
+    <div class="control-group">
+    <%= f.label :consultant, :class => 'control-label' %>
+    <div class="controls">
+      <%# @outside_consultant = User.find(current_user.id).consultant %>
+      <%# select('contact', :consultants, [[@outside_consultant.name, :consultant_ids]]) %>
+    
+      <%= select_tag('contact[consultant_ids][]', options_for_select([[current_user.consultant.name, current_user.consultant.id]])) %>
+    </div>
+    </div>
+
+    <% end %>
 
     <div class="control-group">
     <%= f.label :entity_type, :class => 'control-label' %>
@@ -70,6 +83,8 @@
                 contacts_path, :class => 'btn' %>
   </div>
 <% end %>
+
+
 
 
 

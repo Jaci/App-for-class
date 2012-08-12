@@ -16,31 +16,4 @@
 facet(:consultants)
       with(:consultants, params[:consultant_name]) if params[:consultant_name].present?
 
-      Consultant search snippets
-
-    searchable do
-    text :name
-    text :last_name
-    text :address
-    text :geo_expertise
-    text :subject_expertise
-    text :spi_notes
-
-  end
-
-   def index
-    @search1 = Consultant.search1 do
-      fulltext params[:search1]
-      end
       
-      @consultants_s = @search1.results
-      end
-
-
-      <div class="control-group">
-  <%= form_tag consultants_path, :method => :get do %>
-    <%= text_field_tag :search1, params[:search1] %>
-    <%= submit_tag "Search consultants", :name => nil, 
-        :class => 'btn btn-primary' %>
-  </p>
-</div>
