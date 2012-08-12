@@ -1,7 +1,7 @@
 class Fixcapitalizationoncontacts < ActiveRecord::Migration
   def up
 
-  	remove_column :contacts , :SPI_notes, :text
+  	remove_column :contacts , :SPI_notes
   	add_column :contacts , :sp_notes, :text
 
   end
