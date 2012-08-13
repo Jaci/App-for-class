@@ -4,7 +4,7 @@
     <% if current_user.inside? %>
   
     <div class="control-group">
-    <%= f.label :consultant, :class => 'control-label' %>
+    <%= f.label :consultant, "Consultant (shift to select more than one", :class => 'control-label' %>
     <div class="controls">
     <%= select_tag('contact[consultant_ids][]', options_for_select(Consultant.all.map {|x| [x.name, x.id] }), :multiple => true)  %>
     </div>
@@ -13,7 +13,7 @@
     <% else %>
 
     <div class="control-group">
-    <%= f.label :consultant, :class => 'control-label' %>
+    <%= f.label :consultant, "Consultant (shift to select more than one", :class => 'control-label' %>
     <div class="controls">
       <%# @outside_consultant = User.find(current_user.id).consultant %>
       <%# select('contact', :consultants, [[@outside_consultant.name, :consultant_ids]]) %>
@@ -68,7 +68,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :sp_notes, :class => 'control-label' %>
+    <%= f.label :sp_notes, "Internal SPI Notes", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :sp_notes, :class => 'text_area' %>
     </div>

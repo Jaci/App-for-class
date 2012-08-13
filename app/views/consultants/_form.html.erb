@@ -2,11 +2,13 @@
 <% if current_user.manager? %>
 
   <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
+    <%= f.label :name, "First Name", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
+
     </div>
   </div>
+
 
   <div class="control-group">
     <%= f.label :last_name, :class => 'control-label' %>
@@ -16,63 +18,63 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
+    <%= f.label :user_id, "Consultant's email", :class => 'control-label' %>
     <div class="controls">
     <%= select_tag('consultants[user_id.email][]', options_for_select(User.all.map {|x| [x.email, x.id] }), :multiple => true)  %>
     </div>
     </div>
 
   <div class="control-group">
-    <%= f.label :phone_number, :class => 'control-label' %>
+    <%= f.label :phone_number, "Preferred Phone Number", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :phone_number, :class => 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :sec_phone, :class => 'control-label' %>
+    <%= f.label :sec_phone, "Secondary Phone Number", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :sec_phone, :class => 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :fax_number, :class => 'control-label' %>
+    <%= f.label :fax_number, "Fax Number", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :fax_number, :class => 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :address, :class => 'control-label' %>
+    <%= f.label :address, "Address or location", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :address, :class => 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :email_other, :class => 'control-label' %>
+    <%= f.label :email_other, "Alternate Email", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :email_other, :class => 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :email_spi, :class => 'control-label' %>
+    <%= f.label :email_spi, "SPI Email", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :email_spi, :class => 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :geo_expertise, :class => 'control-label' %>
+    <%= f.label :geo_expertise, "Geographical Expertise", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :geo_expertise, :class => 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :subject_expertise, :class => 'control-label' %>
+    <%= f.label :subject_expertise, "Subject Expertise", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :subject_expertise, :class => 'text_field' %>
     </div>
@@ -81,7 +83,7 @@
   <% if current_user.inside? %>
 
   <div class="control-group">
-    <%= f.label :spi_notes, :class => 'control-label' %>
+    <%= f.label :spi_notes, "Internal SPI Notes", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :spi_notes, :class => 'text_area' %>
     </div>
@@ -90,14 +92,14 @@
   <% if current_user.manager? %>
 
   <div class="control-group">
-    <%= f.label :cost, :class => 'control-label' %>
+    <%= f.label :cost, "Cost Per Hour (or specify retainer)", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :cost, :class => 'text_field' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :start_date, :class => 'control-label' %>
+    <%= f.label :start_date, "Start Date", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :start_date, :class => 'text_field' %>
     </div>
