@@ -1,6 +1,7 @@
 <%= form_for @consultant, :html => { :class => 'form-horizontal' } do |f| %>
+ 
 
-<% if current_user.inside? %>
+  <% if current_user.inside? %>
 
   <div class="control-group">
     <%= f.label :name, "First Name", :class => 'control-label' %>
@@ -87,14 +88,10 @@
     </div>
   </div>  
 
-  <% else %>
 
- <%= "You must be signed in as a manager to add or edit consultants" %>
- <% end %>
 
-  <% if current_user.manager? %>
 
-  <div class="control-group">
+<div class="control-group">
     <%= f.label :cost, "Cost Per Hour (or specify retainer)", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :cost, :class => 'text_field' %>
@@ -151,21 +148,22 @@
     </div>
   </div>
 
+  
+  </div>
+  <% end %>
+
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 consultants_path, :class => 'btn' %>
-  </div>
 
-  
-
-  
-
-  <% else %>
-
- 
   <% end %>
-    <% end %>
+
+
+  
+
+
+    
   
 
 
