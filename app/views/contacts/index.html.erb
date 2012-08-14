@@ -160,12 +160,11 @@
   <tbody>
 
 
-    <% @outside_contacts = User.find(current_user.id).consultant.contacts %>
+    <% @outside_contacts = User.find(current_user.id).consultant.contacts rescue nil %>
 
     <% if @outside_contacts %>
     <% @outside_contacts.each do |contact| %>
     <% end %>
-
 
     
     <tr> 
