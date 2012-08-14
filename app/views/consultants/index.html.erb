@@ -26,8 +26,10 @@
       <th><%= model_class.human_attribute_name("SPI notes") %></th>
       <% else %>
       <% end %>
-      
+      <% if current_user.manager? %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% else %>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -48,15 +50,22 @@
         <td><%= consultant.spi_notes || "--" %></td>
         <% else %>
           <% end %>
+       
+        
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+         <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_consultant_path(consultant), :class => 'btn btn-mini' %>
+          
+          <% if current_user.manager? %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       consultant_path(consultant),
                       :method => :delete,
                       :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure you want to delete #{consultant.name}'s record?")),
                       :class => 'btn btn-mini btn-danger' %>
+          <% else %>
+          <% end %>
         </td>
+
       </tr>
     <% end %>
   </tbody>

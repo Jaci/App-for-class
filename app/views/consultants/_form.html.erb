@@ -1,14 +1,13 @@
 <%= form_for @consultant, :html => { :class => 'form-horizontal' } do |f| %>
-<% if current_user.manager? %>
+
+<% if current_user.inside? %>
 
   <div class="control-group">
     <%= f.label :name, "First Name", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
-
     </div>
   </div>
-
 
   <div class="control-group">
     <%= f.label :last_name, :class => 'control-label' %>
@@ -80,7 +79,6 @@
     </div>
   </div>
 
-  <% if current_user.inside? %>
 
   <div class="control-group">
     <%= f.label :spi_notes, "Internal SPI Notes", :class => 'control-label' %>
@@ -88,6 +86,19 @@
       <%= f.text_area :spi_notes, :class => 'text_area' %>
     </div>
   </div>
+
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                consultants_path, :class => 'btn' %>
+  </div>
+  
+
+  <% else %>
+
+ <%= "You must be signed in as a manager to add or edit consultants" %>
+ <% end %>
 
   <% if current_user.manager? %>
 
@@ -135,7 +146,7 @@
   </div> 
 
   <div class="control-group">
-    <%= f.label :resume, :class => 'control-label' %>
+    <%= f.label :resume, "Year of resume on file", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :resume, :class => 'text_field', :label => "Resume year" %>
     </div>
@@ -154,26 +165,17 @@
                 consultants_path, :class => 'btn' %>
   </div>
 
-  <% else %>
-
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                consultants_path, :class => 'btn' %>
-  </div>
-  <% end %>
-
-  <% else %>
-
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                consultants_path, :class => 'btn' %>
-  </div>
-  <% end %>
   
-<% end %>
 
- <%= "You must be a manger to add consultants" %>
- <% end %>
+  
+
+  <% else %>
+
+ 
+  <% end %>
+    <% end %>
+  
+
+
+ 
 
