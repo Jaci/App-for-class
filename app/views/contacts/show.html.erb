@@ -34,7 +34,7 @@
         <% end %>
   
   <% if @contact.sp_notes.present? %>
-  <dt><strong><%= model_class.human_attribute_name("SPI notes") %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name("SPI Notes") %>:</strong></dt>
   <dd><%= @contact.sp_notes %></dd>
   <% else %>
           <dd> -- </dd>
@@ -51,7 +51,7 @@
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('Contact', :default => t("helpers.links.back")),
+  <%= link_to t('.back', :default => t("helpers.links.back")),
               contacts_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_contact_path(@contact), :class => 'btn' %>
