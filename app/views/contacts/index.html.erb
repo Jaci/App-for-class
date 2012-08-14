@@ -70,6 +70,7 @@
         <% if contact.consultant_ids.present? %> 
           <td><% contact.consultants.each do |consultant| %> 
           <%= link_to consultant.name, consultant %> <br>
+          <br>
           <% end %>
         </td>
         <% else %>

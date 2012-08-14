@@ -4,7 +4,7 @@
     <% if current_user.inside? %>
   
     <div class="control-group">
-    <%= f.label :consultant, "Consultant (shift to select more than one", :class => 'control-label' %>
+    <%= f.label :consultant, "Consultant (command to select more than one", :class => 'control-label' %>
     <div class="controls">
     <%= select_tag('contact[consultant_ids][]', options_for_select(Consultant.all.map {|x| [x.name, x.id] }), :multiple => true)  %>
     </div>
