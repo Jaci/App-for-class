@@ -159,8 +159,12 @@
   </thead>
   <tbody>
 
+
     <% @outside_contacts = User.find(current_user.id).consultant.contacts %>
+
+    <% if @outside_contacts %>
     <% @outside_contacts.each do |contact| %>
+    <% end %>
 
 
     
